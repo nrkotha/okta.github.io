@@ -500,6 +500,8 @@ core.user.config.user_creation.failure |
 
 ##### User Impersonation
 
+These events are recorded when Okta Customer Success is granted access to an organization by an administrator for troubleshooting.
+
 ObjectType | Description
 ----------------------------------------- | ---
 core.user.impersonation.session.initiated |

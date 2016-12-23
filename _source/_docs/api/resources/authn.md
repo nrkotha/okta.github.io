@@ -46,7 +46,7 @@ Trusted applications are backend applications that act as authentication broker 
 ### Primary Authentication
 {:.api .api-operation}
 
-{% api_operation post /api/v1/authn %}
+{% api_operation post /authn %}
 
 Every authentication transaction starts with primary authentication which validates a user's primary password credential. **Password Policy**, **MFA Policy**,  and **Sign-On Policy** are evaluated during primary authentication to determine if the user's password is expired, a factor should be enrolled, or additional verification is required. The [transaction state](#transaction-state) of the response depends on the user's status, group memberships and assigned policies.
 
@@ -731,7 +731,7 @@ curl -v -X POST \
 ### Change Password
 {:.api .api-operation}
 
-{% api_operation post api/v1/authn/credentials/change_password %}
+{% api_operation post /authn/credentials/change_password %}
 
 This operation changes a user's password by providing the existing password and the new password password for authentication transactions with either the `PASSWORD_EXPIRED` or `PASSWORD_WARN` state.
 
@@ -838,7 +838,7 @@ You can enroll, activate, and verify factors using the `/api/v1/authn/factors` e
 ### Enroll Factor
 {:.api .api-operation}
 
-{% api_operation post /api/v1/authn/factors %}
+{% api_operation post /authn/factors %}
 
 Enrolls a user with a [factor](factors.html#supported-factors-for-providers) assigned by their **MFA Policy**.
 
@@ -1682,7 +1682,7 @@ In this example we will put all the elements together in html page.
 
         <!-- The host, sig_request, and post_action values will be given via the Auth API -->
         <script>
-            Duo.init({  
+            Duo.init({
                 'host': '<your org duo host>.duosecurity.com',
                 'sig_request': '<activation signature>',
                 'post_action': 'https://your-domain.okta.com/api/v1/authn/factors/your-factor-id/lifecycle/duoCallback'
@@ -2456,7 +2456,7 @@ u2f.register(appId, registerRequests, [], function (data) {
 </script>
 ~~~
 
-Activate a `u2f` factor by verifying the registration data and client data.  
+Activate a `u2f` factor by verifying the registration data and client data.
 
 ##### Request Parameters
 {:.api .api-request .api-request-params}
@@ -3266,7 +3266,7 @@ curl -v -X POST \
 
 <!-- The host, sig_request, and post_action values will be given via the Auth API -->
 <script>
-    Duo.init({  
+    Duo.init({
         'host': '<your org duo host>.duosecurity.com',
         'sig_request': '<verification signature>',
         'post_action': 'https://your-domain.okta.com/api/v1/authn/factors/your-factor-id/lifecycle/duoCallback'
@@ -4667,7 +4667,7 @@ curl -v -X POST \
        },
        "age":{
          "minAgeMinutes":0,
-         "historyCount":0  
+         "historyCount":0
       }
     }
   },

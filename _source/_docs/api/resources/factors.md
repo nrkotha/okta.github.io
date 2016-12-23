@@ -21,7 +21,7 @@ Explore the Factors API: [![Run in Postman](https://run.pstmn.io/button.svg)](ht
 ### Get Factor
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-get"><span class="api-label">GET</span> /api/v1/users/*:uid*/factors/*:fid*
+<span class="api-uri-template api-uri-get"><span class="api-label">GET</span> /users/*:uid*/factors/*:fid*
 
 Fetches a factor for the specified user
 
@@ -96,7 +96,7 @@ curl -v -X GET \
 ### List Enrolled Factors
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-get"><span class="api-label">GET</span> /api/v1/users/*:uid*/factors
+<span class="api-uri-template api-uri-get"><span class="api-label">GET</span> /users/*:uid*/factors
 
 Enumerates all the enrolled factors for the specified user
 
@@ -257,7 +257,7 @@ curl -v -X GET \
 ### List Factors to Enroll
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-get"><span class="api-label">GET</span> /api/v1/users/*:uid*/factors/catalog
+<span class="api-uri-template api-uri-get"><span class="api-label">GET</span> /users/*:uid*/factors/catalog
 
 Enumerates all the [supported factors](#supported-factors-for-providers) that can be enrolled for the specified user
 
@@ -415,7 +415,7 @@ curl -v -X GET \
 ### List Security Questions
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-get"><span class="api-label">GET</span> /api/v1/users/*:uid*/factors/questions
+<span class="api-uri-template api-uri-get"><span class="api-label">GET</span> /users/*:uid*/factors/questions
 
 Enumerates all available security questions for a user's `question` factor
 
@@ -474,7 +474,7 @@ curl -v -X GET \
 ### Enroll Factor
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-post"><span class="api-label">POST</span> /api/v1/users/*:id*/factors
+<span class="api-uri-template api-uri-post"><span class="api-label">POST</span> /users/*:id*/factors
 
 Enrolls a user with a supported [factor](#list-factors-to-enroll)
 
@@ -733,9 +733,9 @@ curl -v -X POST \
 ##### Enroll Okta SMS Factor Using Custom Template
 {:.api .api-operation}
 
-Customize (and optionally localize) the SMS message sent to the user on enrollment. 
-* If the request has an `Accept_Language` header and the template contains a translation for that language, the SMS message is sent using the translated template. 
-* If the language provided in the `Accept-Language` header doesn't exist, the SMS message is sent using the template text. 
+Customize (and optionally localize) the SMS message sent to the user on enrollment.
+* If the request has an `Accept_Language` header and the template contains a translation for that language, the SMS message is sent using the translated template.
+* If the language provided in the `Accept-Language` header doesn't exist, the SMS message is sent using the template text.
 * If the provided <em>templateId</em> doesn't match the existing template, the SMS message is sent using the default template.
 
 >For instructions about how to create custome templates, see [SMS Template](templates.html#sms-template).
@@ -1625,7 +1625,7 @@ curl -v -X POST \
           "DELETE"
         ]
       }
-    },    
+    },
     "user": {
       "href": "https://your-domain.okta.com/api/v1/users/00u15s1KDETTQMQYABRL",
       "hints": {
@@ -1786,7 +1786,7 @@ curl -v -X POST \
 ### Reset Factor
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-delete"><span class="api-label">DELETE</span> /api/v1/users/*:uid*/factors/*:fid*
+<span class="api-uri-template api-uri-delete"><span class="api-label">DELETE</span> /users/*:uid*/factors/*:fid*
 
 Unenrolls an existing factor for the specified user, allowing the user to enroll a new factor.
 
@@ -1966,9 +1966,9 @@ curl -v -X POST \
 #### Verify SMS Factor Using A Custom Template
 {:.api .api-operation}
 
-Customize (and optionally localize) the SMS message sent to the user on verification. 
-* If the request has an `Accept-Language` header and the template contains translation for that language, the SMS message is sent in that language. 
-* If the language provided in the `Accept-Language` header doesn't exist in the template definition, the SMS message is sent using the template text. 
+Customize (and optionally localize) the SMS message sent to the user on verification.
+* If the request has an `Accept-Language` header and the template contains translation for that language, the SMS message is sent in that language.
+* If the language provided in the `Accept-Language` header doesn't exist in the template definition, the SMS message is sent using the template text.
 * If the provided `templateId` doesn't match an existing template, the SMS message is sent using the default template.
 
 To create custom templates, see [Templates](templates.html#sms-template).
@@ -2548,7 +2548,7 @@ Specifies the profile for a `call` factor
 | Property      | Description                   | DataType                                                        | Nullable | Unique  | Readonly | MinLength | MaxLength | Validation |
 | ------------- | ----------------------------- | --------------------------------------------------------------- | -------- | ------- | -------- | --------- | --------- | ---------- |
 | phoneNumber   | phone number of the device    | String [E.164 formatted](http://en.wikipedia.org/wiki/E.164)    | FALSE    | TRUE    | FALSE    |           | 15        |            |
-| phoneExtension| extension of the device       | String                                                          | TRUE     | FALSE   | FALSE    |           | 15        |            | 
+| phoneExtension| extension of the device       | String                                                          | TRUE     | FALSE   | FALSE    |           | 15        |            |
 |---------------+-------------------------------+-----------------------------------------------------------------+----------+---------+----------+-----------+-----------+------------|
 
 ~~~json

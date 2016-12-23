@@ -83,17 +83,17 @@ The Policy model defines several attributes:
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
 id | Identifier of the policy | String | No | Assigned
-type | Policy type | Specifies the type of the policy, e.g. `OKTA_SIGN_ON` or `MFA_ENROLL` | Yes | 
-name | Name of the policy | String | Yes | 
+type | Policy type | Specifies the type of the policy, e.g. `OKTA_SIGN_ON` or `MFA_ENROLL` | Yes |
+name | Name of the policy | String | Yes |
 system | This is set to 'true' on system policies, which cannot be deleted. | Boolean | No | false
 description | Description of the policy | String | No | Null
 priority | Priority of the policy | Int | No | Last / Lowest Priority
 status | Status of the policy: ACTIVE or INACTIVE | String | No | "ACTIVE"
-conditions | Conditions for policy | <a href="#PolicyConditionsObject">Conditions Object</a> | No | 
-settings | Settings for policy | <a href="#PolicySettingsObject">Policy Settings Object</a> | No | 
+conditions | Conditions for policy | <a href="#PolicyConditionsObject">Conditions Object</a> | No |
+settings | Settings for policy | <a href="#PolicySettingsObject">Policy Settings Object</a> | No |
 created | Timestamp when the policy was created | Date | No | Assigned
 lastUpdated | Timestamp when the policy was last modified | Date | No | Assigned
-_links | Hyperlinks | <a href="#LinksObject">Links Object</a> | No | 
+_links | Hyperlinks | <a href="#LinksObject">Links Object</a> | No |
 
 
 ### Policy Settings Object
@@ -116,14 +116,14 @@ Specifies link relations (See [Web Linking](http://tools.ietf.org/html/rfc5988))
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-self | The policy or rule | String | Yes | 
-activate | Action to activate a policy or rule | String | Yes | 
-deactivate | Action to deactivate a policy or rule | String | Yes | 
-rules | Rules objects for a policy only | String | Yes | 
-policy | Policy object for a rule only | String | Yes | 
+self | The policy or rule | String | Yes |
+activate | Action to activate a policy or rule | String | Yes |
+deactivate | Action to deactivate a policy or rule | String | Yes |
+rules | Rules objects for a policy only | String | Yes |
+policy | Policy object for a rule only | String | Yes |
 
 ## Rules
-Each policy may contain one or more rules.  Rules, like policies contain conditions, which must be satisfied in order for the rule to be applied.  
+Each policy may contain one or more rules.  Rules, like policies contain conditions, which must be satisfied in order for the rule to be applied.
 
 ### Rule Priority and Defaults
 
@@ -132,7 +132,7 @@ Each policy may contain one or more rules.  Rules, like policies contain conditi
  - Only the default policy contains a default rule. The default rule cannot be edited or deleted.
  - The default rule is required and always is the last rule in the priority order. If you add rules to the default policy, they have a higher priority than the default rule.
  - The `system` attribute determines whether a rule is created by a system or by a user. The default rule is the only rule that has this attribute.
- 
+
 ### Rule Priority
 
 Like policies, rules have a priority which governs the order in which they are considered during evaluation. The highest priority rule has a `priority` of 1.
@@ -160,14 +160,14 @@ The Rules model defines several attributes:
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
 id | Identifier of the rule | String | No | Assigned
-type | Rule type | `OKTA_SIGN_ON` or `MFA_ENROLL` | Yes | 
+type | Rule type | `OKTA_SIGN_ON` or `MFA_ENROLL` | Yes |
 status | Status of the rule: `ACTIVE` or `INACTIVE` | String | No | ACTIVE
 priority | Priority of the rule | Integer | No | Last / Lowest Priority
 system | This is set to 'true' on system rules, which cannot be deleted. | Boolean | No | false
 created | Timestamp when the rule was created | Date | No | Assigned
 lastUpdated | Timestamp when the rule was last modified | Date | No | Assigned
-conditions | Conditions for rule | <a href="#RuleConditionsObject">Conditions Object</a> | No | 
-actions | Actions for rule | <a href="#RulesActionsObject">Rules Actions Objects</a> | No | 
+conditions | Conditions for rule | <a href="#RuleConditionsObject">Conditions Object</a> | No |
+actions | Actions for rule | <a href="#RulesActionsObject">Rules Actions Objects</a> | No |
 
 ### Actions Objects
 {: #RulesActionsObject }
@@ -187,13 +187,13 @@ Specifies link relations (See [Web Linking](http://tools.ietf.org/html/rfc5988))
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-self | The policy or rule | String | Yes | 
-activate | Action to activate a policy or rule | String | Yes | 
-deactivate | Action to deactivate a policy or rule | String | Yes | 
+self | The policy or rule | String | Yes |
+activate | Action to activate a policy or rule | String | Yes |
+deactivate | Action to deactivate a policy or rule | String | Yes |
 
 ### Conditions
 {: #Conditions }
- 
+
 #### People Condition Object
 {: #PeopleObject }
 
@@ -201,8 +201,8 @@ The people condition identifies users and groups that are used together. For pol
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-groups | The group condition | String | Yes | 
-users | The user condition | String | Yes | 
+groups | The group condition | String | Yes |
+users | The user condition | String | Yes |
 
 
 #### User Condition Object
@@ -211,8 +211,8 @@ users | The user condition | String | Yes |
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-include | The users to be included | Array | Yes | 
-exclude | The users to be excluded | Array | Yes | 
+include | The users to be included | Array | Yes |
+exclude | The users to be excluded | Array | Yes |
 
 
 #### Group Condition Object
@@ -220,8 +220,8 @@ exclude | The users to be excluded | Array | Yes |
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-include | The groups to be included | Array | Yes | 
-exclude | The groups to be excluded | Array | Yes | 
+include | The groups to be included | Array | Yes |
+exclude | The groups to be excluded | Array | Yes |
 
 #### AuthContext Condition Object
 {: #AuthContextConditionObject }
@@ -230,7 +230,7 @@ Specifies an authentication entry point.
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-authType |  | `ANY` or `RADIUS` | No | 
+authType |  | `ANY` or `RADIUS` | No |
 
 
 #### Network Condition Object
@@ -240,7 +240,7 @@ Specifies a network segment.
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-connection |  | `ANYWHERE`, `ON_NETWORK` or `OFF_NETWORK` | No | 
+connection |  | `ANYWHERE`, `ON_NETWORK` or `OFF_NETWORK` | No |
 
 
 #### People Condition Object
@@ -248,7 +248,7 @@ connection |  | `ANYWHERE`, `ON_NETWORK` or `OFF_NETWORK` | No |
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-users |  | <a href="#UserConditionObject">User Condition Object</a> | No | 
+users |  | <a href="#UserConditionObject">User Condition Object</a> | No |
 
 <!-- #### Authentication Provider Condition Object
 
@@ -259,7 +259,7 @@ users |  | <a href="#UserConditionObject">User Condition Object</a> | No |
 ### Get a Policy
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-get"><span class="api-label">GET </span> /api/v1/policies/<em>:policyId</em></span>
+<span class="api-uri-template api-uri-get"><span class="api-label">GET </span> /policies/<em>:policyId</em></span>
 
 #### Request Parameters
 
@@ -279,13 +279,13 @@ curl -v -X GET \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 200: 
+HTTP 200:
 <a href="#PolicyObject">Policy Object</a>
 
 ### Get a Policy with Rules
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-get"><span class="api-label">GET </span> /api/v1/policies/<em>:policyId</em>?expand=rules</span>
+<span class="api-uri-template api-uri-get"><span class="api-label">GET </span> /policies/<em>:policyId</em>?expand=rules</span>
 
 #### Request Parameters
 
@@ -306,13 +306,13 @@ curl -v -X GET \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 200: 
+HTTP 200:
 <a href="#PolicyObject">Policy Object</a>
 
 ### Get All Policies by Type
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-get"><span class="api-label">GET </span> /api/v1/policies?type=<em>:type</em></span>
+<span class="api-uri-template api-uri-get"><span class="api-label">GET </span> /policies?type=<em>:type</em></span>
 
 #### Request Parameters
 
@@ -332,15 +332,15 @@ curl -v -X GET \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 200: 
+HTTP 200:
 <a href="#PolicyObject">Policy Object</a>
-HTTP 204: 
+HTTP 204:
 <a href="#PolicyObject">Policy Object</a>
 
 ### Delete Policy
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-delete"><span class="api-label">DELETE </span> /api/v1/policies/<em>:policyId</em></span>
+<span class="api-uri-template api-uri-delete"><span class="api-label">DELETE </span> /policies/<em>:policyId</em></span>
 
 #### Request Parameters
 
@@ -360,13 +360,13 @@ curl -v -X DELETE \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 204: 
+HTTP 204:
 *No Content*
 
 ### Update a Policy
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-put"><span class="api-label">PUT </span> /api/v1/policies/<em>:policyId</em></span>
+<span class="api-uri-template api-uri-put"><span class="api-label">PUT </span> /policies/<em>:policyId</em></span>
 
 #### Request Parameters
 
@@ -399,13 +399,13 @@ curl -v -X PUT \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 200: 
+HTTP 200:
 <a href="#PolicyObject">Policy Object</a>
 
 ### Create a Policy
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-post"><span class="api-label">POST </span> /api/v1/policies</span>
+<span class="api-uri-template api-uri-post"><span class="api-label">POST </span> /policies</span>
 
 #### Request Parameters
 
@@ -440,13 +440,13 @@ curl -v -X POST \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 204: 
+HTTP 204:
 <a href="#PolicyObject">Policy Object</a>
 
 ### Activate a Policy
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-post"><span class="api-label">POST </span> /api/v1/policies/<em>:policyId</em>/lifecycle/activate</span>
+<span class="api-uri-template api-uri-post"><span class="api-label">POST </span> /policies/<em>:policyId</em>/lifecycle/activate</span>
 
 #### Request Parameters
 
@@ -466,13 +466,13 @@ curl -v -X POST \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 204: 
+HTTP 204:
 *No Content is returned when the activation is successful.*
 
 ### Deactivate a Policy
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-post"><span class="api-label">POST </span> /api/v1/policies/<em>:policyId</em>/lifecycle/deactivate</span>
+<span class="api-uri-template api-uri-post"><span class="api-label">POST </span> /policies/<em>:policyId</em>/lifecycle/deactivate</span>
 
 #### Request Parameters
 
@@ -492,7 +492,7 @@ curl -v -X POST \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 200: 
+HTTP 200:
 *No Content is returned when the deactivation is successful.*
 
 ## Rules Operations
@@ -500,7 +500,7 @@ HTTP 200:
 ### Get Policy Rules
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-get"><span class="api-label">GET </span> /api/v1/policies/<em>:policyId</em>/rules</span>
+<span class="api-uri-template api-uri-get"><span class="api-label">GET </span> /policies/<em>:policyId</em>/rules</span>
 
 #### Request Parameters
 
@@ -520,13 +520,13 @@ curl -v -X GET \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 200: 
+HTTP 200:
 <a href="#RulesObject">Rules Object</a>
 
 ### Create a rule
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-post"><span class="api-label">POST </span> /api/v1/policies/<em>:policyId</em>/rules</span>
+<span class="api-uri-template api-uri-post"><span class="api-label">POST </span> /policies/<em>:policyId</em>/rules</span>
 
 #### Request Parameters
 
@@ -564,13 +564,13 @@ curl -v -X POST \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 200: 
+HTTP 200:
 <a href="#RulesObject">Rules Object</a>
 
 ### Delete a rule
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-delete"><span class="api-label">DELETE </span> /api/v1/policies/<em>:policyId</em>/rules/<em>:ruleId</em></span>
+<span class="api-uri-template api-uri-delete"><span class="api-label">DELETE </span> /policies/<em>:policyId</em>/rules/<em>:ruleId</em></span>
 
 #### Request Parameters
 
@@ -590,13 +590,13 @@ curl -v -X DELETE \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 204: 
+HTTP 204:
 *No Content*
 
 ### Get a rule
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-get"><span class="api-label">GET </span> /api/v1/policies/<em>:policyId</em>/rules/<em>:ruleId</em></span>
+<span class="api-uri-template api-uri-get"><span class="api-label">GET </span> /policies/<em>:policyId</em>/rules/<em>:ruleId</em></span>
 
 #### Request Parameters
 
@@ -616,13 +616,13 @@ curl -v -X GET \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 200: 
+HTTP 200:
 <a href="#RulesObject">Rules Object</a>
 
 ### Update a rule
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-put"><span class="api-label">PUT </span> /api/v1/policies/<em>:policyId</em>/rules/<em>:ruleId</em></span>
+<span class="api-uri-template api-uri-put"><span class="api-label">PUT </span> /policies/<em>:policyId</em>/rules/<em>:ruleId</em></span>
 
 #### Request Parameters
 
@@ -663,13 +663,13 @@ curl -v -X PUT \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 200: 
+HTTP 200:
 <a href="#RulesObject">Rules Object</a>
 
 ### Activate A Rule
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-post"><span class="api-label">POST </span> /api/v1/policies/<em>:policyId</em>/rules/<em>:ruleId</em>/lifecycle/activate</span>
+<span class="api-uri-template api-uri-post"><span class="api-label">POST </span> /policies/<em>:policyId</em>/rules/<em>:ruleId</em>/lifecycle/activate</span>
 
 #### Request Parameters
 
@@ -689,13 +689,13 @@ curl -v -X POST \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 204: 
+HTTP 204:
 *No content*
 
 ### Deactivate A Rule
 {:.api .api-operation}
 
-<span class="api-uri-template api-uri-post"><span class="api-label">POST </span> /api/v1/policies/<em>:policyId</em>/rules/<em>:ruleId</em>/lifecycle/deactivate</span>
+<span class="api-uri-template api-uri-post"><span class="api-label">POST </span> /policies/<em>:policyId</em>/rules/<em>:ruleId</em>/lifecycle/deactivate</span>
 
 #### Request Parameters
 
@@ -715,7 +715,7 @@ curl -v -X POST \
 ##### Response Types
 {:.api .api-response .api-response-example}
 
-HTTP 204: 
+HTTP 204:
 *No content*
 
 ## Type Specific Policy Data Structures
@@ -739,11 +739,11 @@ The following conditions may be applied to Okta Sign On Policy
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-access | `ALLOW` or `DENY` | `ALLOW` or `DENY` | Yes | 
+access | `ALLOW` or `DENY` | `ALLOW` or `DENY` | Yes |
 requireFactor |  | Boolean | No | false
-factorPromptMode | `DEVICE`, `SESSION` or `ALWAYS` | `DEVICE`, `SESSION` or `ALWAYS` | No | 
-factorLifetime | How long until factor times out | Integer | No | 
-session | Session Rules | <a href="#SignonSessionObject">Signon Session Object</a> | No | 
+factorPromptMode | `DEVICE`, `SESSION` or `ALWAYS` | `DEVICE`, `SESSION` or `ALWAYS` | No |
+factorLifetime | How long until factor times out | Integer | No |
+session | Session Rules | <a href="#SignonSessionObject">Signon Session Object</a> | No |
 
 
 ### Signon Session Object
@@ -751,8 +751,8 @@ session | Session Rules | <a href="#SignonSessionObject">Signon Session Object</
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-maxSessionIdleMinutes | Maximum number of minutes that a user session can be idle before the session is ended. | Integer | No | 
-maxSessionLifetimeMinutes | Maximum number of minutes from user login that a user session will be active. Set this to force users to sign-in again after the number of specified minutes. Disable by setting to `0`. | Integer | No | 
+maxSessionIdleMinutes | Maximum number of minutes that a user session can be idle before the session is ended. | Integer | No |
+maxSessionLifetimeMinutes | Maximum number of minutes from user login that a user session will be active. Set this to force users to sign-in again after the number of specified minutes. Disable by setting to `0`. | Integer | No |
 usePersistentCookie | If set to `false`, user session cookies will only last the length of a browser session. If set to `true`, user session cookies will last across browser sessions. This setting does not impact Okta Administrator users, who can *never* have persistant session cookies. | Boolean | No | false
 
 ### Rules Conditions
@@ -770,21 +770,21 @@ The following conditions may be applied to the rules associated with Okta Sign O
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-google_otp | Google Authenticator | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No | 
-okta_otp | Okta Verify TOTP | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No | 
-okta_push | Okta Verify Push | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No | 
-okta_question | Okta Security Question | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No | 
-okta_sms | Okta SMS | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No | 
-rsa_token | RSA Token | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No | 
-symantec_vip | Symantic VIP | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No | 
+google_otp | Google Authenticator | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No |
+okta_otp | Okta Verify TOTP | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No |
+okta_push | Okta Verify Push | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No |
+okta_question | Okta Security Question | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No |
+okta_sms | Okta SMS | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No |
+rsa_token | RSA Token | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No |
+symantec_vip | Symantic VIP | <a href="#PolicyFactorObject">Policy MFA Factor Object</a> | No |
 
 #### Policy MFA Factor Object
 {: #PolicyFactorObject }
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-consent |  | <a href="#PolicyFactorConsentObject">Policy Factor Consent Object</a> | No | 
-enroll |  | <a href="#PolicyFactorEnrollObject">Policy Factor Enroll Object</a> | No | 
+consent |  | <a href="#PolicyFactorConsentObject">Policy Factor Consent Object</a> | No |
+enroll |  | <a href="#PolicyFactorEnrollObject">Policy Factor Enroll Object</a> | No |
 
 
 #### Policy Factor Enroll Object
@@ -792,16 +792,16 @@ enroll |  | <a href="#PolicyFactorEnrollObject">Policy Factor Enroll Object</a> 
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-self |  | `NOT_ALLOWED`, `OPTIONAL` or `REQUIRED` | Yes | 
+self |  | `NOT_ALLOWED`, `OPTIONAL` or `REQUIRED` | Yes |
 
 #### Policy Factor Consent Object
 {: #PolicyFactorConsentObject }
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-terms | The format of the consent dialog to be presented. | `TEXT`, `RTF`, `MARKDOWN` or `URL` | No | 
+terms | The format of the consent dialog to be presented. | `TEXT`, `RTF`, `MARKDOWN` or `URL` | No |
 type | Does the user need to consent to `NONE` or `TERMS_OF_SERVICE`. | String | No | NONE
-value | The contents of the consent dialog. | String | No | 
+value | The contents of the consent dialog. | String | No |
 
 ### Policy Conditions
 The following conditions may be applied to Okta MFA Policy
@@ -813,10 +813,10 @@ The following conditions may be applied to Okta MFA Policy
 
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
-self | Should the user be enrolled the first time they `LOGIN`, the next time they are `CHALLENGE`d, or `NEVER`? | `CHALLENGE`, `LOGIN` or `NEVER` | Yes | 
+self | Should the user be enrolled the first time they `LOGIN`, the next time they are `CHALLENGE`d, or `NEVER`? | `CHALLENGE`, `LOGIN` or `NEVER` | Yes |
 
 ### Rules Conditions
-The following conditions may be applied to the rules associated with Okta MFA Policy 
+The following conditions may be applied to the rules associated with Okta MFA Policy
 
 ## Password Policy
 {: #GroupPasswordPolicy }
